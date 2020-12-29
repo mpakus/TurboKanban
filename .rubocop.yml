@@ -1,0 +1,39 @@
+#inherit_from: .rubocop_todo.yml
+require:
+  - rubocop/cop/internal_affairs
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'bin/*'
+    - 'log/*'
+    - 'node_modules/**/*'
+    - 'config/application.rb'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+
+  TargetRubyVersion: 3.0
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Documentation:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/admin/**/*'
+
+RSpec/NamedSubject:
+  Exclude:
+    - 'spec/**/*'

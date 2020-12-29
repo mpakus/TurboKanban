@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  reconnect: true
+  username: postgres
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: telle_development
+
+test:
+  <<: *default
+  database: telle_test
+
+production:
+  <<: *default
+  database: telle_production
+  username: telle
+  password: <%= ENV['TELLE_DATABASE_PASSWORD'] %>
