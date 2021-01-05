@@ -1,0 +1,3 @@
+= turbo_frame_tag "new_task_#{dom_id(list)}" do
+  == render 'form'
+  / = link_to 'Back', board_path(board), 'data-turbo-frame': '_top'

@@ -1,0 +1,14 @@
+= turbo_frame_tag task do
+  .bg-white.shadow.rounded.px-3.pt-3.pb-5.border.border-white.mt-2
+    .flex.justify-between
+      p.text-gray-700.font-semibold.font-sans.tracking-wide.text-sm
+        = task.name
+      img.w-6.h-6.rounded-full.ml-3 alt="Avatar" src="https://picsum.photos/seed/#{rand(1000)}/200/300" /
+    .flex.mt-4.justify-between.items-center
+      span.text-sm.text-gray-600
+        = l task.created_at, format: :short
+      - color = %w[purple yellow green blue].shuffle.first
+      .px-3.h-6.rounded-full.text-xs.font-semibold.flex.items-center class="bg-#{color}-100 text-#{color}-700"
+        span.w-2.h-2.rounded-full.mr-1 class="bg-#{color}-400"
+        span
+          = { purple: 'Bug', yellow: 'Fix', green: 'Improvement', blue: 'Feature' }[color.to_sym]

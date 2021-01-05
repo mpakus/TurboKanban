@@ -1,11 +1,27 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+import '../styles/application.css'
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-import "channels"
+require("@rails/ujs").start()
 
-Rails.start()
-Turbolinks.start()
+// import "channels"
+// import Rails from "@rails/ujs"
+import "@hotwired/turbo-rails"
+// import { Turbo, cable } from "@hotwired/turbo-rails"
+require("channels")
+
+// window.Turbo = Turbo;
+// window.cable = cable;
+
+// Rails.start()
+// Turbo.start();
+// Turbo.setProgressBarDelay(500);
+//
+// window.Turbo = Turbo;
+// window.cable = cable;
+
+// Turbo.start()
+//
+// (function() {
+//   this.App || (this.App = {});
+//
+//   App.cable = ActionCable.createConsumer(`ws://localhost:28080`);
+// }).call(this);

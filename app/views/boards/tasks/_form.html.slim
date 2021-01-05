@@ -1,0 +1,22 @@
+= turbo_frame_tag "new_task_#{list.id}", target: '_top' do
+  = form_for [:board, @task] do |f|
+    - if @task.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+        ul
+          - @task.errors.full_messages.each do |message|
+            li = message
+
+    .field
+      = f.text_field :name,
+              placeholder: 'Task Title',
+              class: 'w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
+    / .field
+      = f.label :description
+      = f.text_area :description
+    / .field
+      = f.label :list
+      = f.collection_select :list, board.lists, :id, :name, selected: list.id
+    = f.hidden_field :list_id
+    .actions
+      = f.submit class: 'bg-indigo-200 shadow-md rounded-lg px-2 py-1'
