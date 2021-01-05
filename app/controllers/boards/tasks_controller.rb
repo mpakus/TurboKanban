@@ -25,15 +25,15 @@ class Boards::TasksController < ApplicationController
 
     if @task.save
       respond_to do |format|
-        # format.turbo_stream do
-        #   render turbo_stream: turbo_stream.append(@task.list, partial: "boards/tasks/task", locals: { task: @task })
-        #   # render turbo_stream: turbo_stream.append("list_#{@task.list_id}", partial: "boards/tasks/task", locals: { task: @task })
-        # end
-        #
+        format.turbo_stream { stream_new_form(@task.list) }
         format.html { redirect_to board_path(board), notice: 'Task was successfully created.' }
       end
     else
-      render :new
+      respond_to do |format|
+        format.turbo_stream { stream_edit_form(@task.list) }
+        format.html { redirect_to board_path(board), notice: 'Task was successfully created.' }
+      end
+      # render :new
     end
   end
 
@@ -53,6 +53,16 @@ class Boards::TasksController < ApplicationController
   end
 
   private
+
+  def stream_edit_form(list)
+    render turbo_stream:
+             turbo_stream.replace("new_task_#{list.id}", partial: "boards/tasks/form", locals: { list: list })
+  end
+
+  def stream_new_form(list)
+    render turbo_stream:
+             turbo_stream.replace("new_task_#{list.id}", partial: "boards/tasks/new_task", locals: { list: list })
+  end
 
   helper_method def task
     @task ||= Task.find(params[:id])

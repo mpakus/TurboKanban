@@ -1,11 +1,11 @@
 class Task < ApplicationRecord
   belongs_to :list
 
-  # broadcasts
-  # broadcasts_to :list
-  after_create_commit  -> { broadcast_append_to "list_#{list.id}", target: "list_#{list.id}", partial: 'boards/tasks/task' }
-  after_update_commit  -> { broadcast_replace_to "list_#{list.id}", target: "list_#{list.id}", partial: 'boards/tasks/task' }
-  after_destroy_commit -> { broadcast_remove_to "list_#{list.id}", target: "list_#{list.id}" }
+  after_create_commit  -> { broadcast_append_to list, target: list, partial: 'boards/tasks/task' }
+  after_update_commit  -> { broadcast_replace_to list, target: list, partial: 'boards/tasks/task' }
+  after_destroy_commit -> { broadcast_remove_to list, target: list }
+
+  validates :name, presence: true
 end
 
 # == Schema Information
