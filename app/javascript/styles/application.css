@@ -9,8 +9,20 @@
 }
 /* Unfortunately @apply cannot be setup in codesandbox,
 but you'd use "@apply border opacity-50 border-blue-500 bg-gray-200" here */
-.ghost-card {
+.sortable-ghost {
   opacity: 0.5;
-  background: #F7FAFC;
-  border: 1px solid #4299e1;
+  /*background: #F7FAFC;*/
+  background: #a7daef;
+  /*border: 1px solid #4299e1;*/
+}
+
+/*.sortable-chosen {*/
+/*  opacity: 0.5;*/
+/*  background: #F7FAFC;*/
+/*  !*border: 1px solid #4299e1;*!*/
+/*}*/
+
+.sortable-drag {
+  opacity: 0.8;
+  background: #a7daef;
 }
