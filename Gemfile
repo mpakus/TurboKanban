@@ -53,4 +53,6 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 end
 
-gem "hotwire-rails", "~> 0.1.2"
+# gem "hotwire-rails", "~> 0.1.2"
+gem 'acts_as_list'
+gem 'turbo-rails'

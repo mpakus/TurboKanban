@@ -1,8 +1,9 @@
-.task-c
+.task-card data-id = task.id
   = turbo_frame_tag task do
     .bg-white.shadow.rounded.px-3.pt-3.pb-5.border.border-white.mt-2
       .flex.justify-between
         p.text-gray-700.font-semibold.font-sans.tracking-wide.text-sm
+          => "##{task.id}"
           = task.name
         img.w-6.h-6.rounded-full.ml-3 alt="Avatar" src="https://picsum.photos/seed/#{rand(1000)}/200/300" /
       .flex.mt-4.justify-between.items-center

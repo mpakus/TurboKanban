@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class List < ApplicationRecord
   belongs_to :board
-  has_many :tasks, dependent: :destroy
-  # broadcasts
+  has_many :tasks,
+           -> { order(position: :asc) },
+           dependent: :destroy
 end
 
 # == Schema Information

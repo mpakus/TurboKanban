@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Membership < ApplicationRecord
-  CATEGORIES = %w[owner admin user]
+  CATEGORIES = %w[owner admin user].freeze
   belongs_to :company
   belongs_to :user
 end

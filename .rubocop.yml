@@ -32,7 +32,6 @@ Layout/HashAlignment:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
-    - 'app/admin/**/*'
 
 RSpec/NamedSubject:
   Exclude:

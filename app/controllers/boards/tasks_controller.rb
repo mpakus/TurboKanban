@@ -1,25 +1,20 @@
-class Boards::TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
 
-  # GET /tasks
+class Boards::TasksController < ApplicationController
+  # before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
     @tasks = Task.all
   end
 
-  # GET /tasks/1
-  def show
-  end
+  def show; end
 
-  # GET /tasks/new
   def new
     @task = list.tasks.new
   end
 
-  # GET /tasks/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /tasks
   def create
     @task = list.tasks.new(task_params)
 
@@ -33,22 +28,29 @@ class Boards::TasksController < ApplicationController
         format.turbo_stream { stream_edit_form(@task.list) }
         format.html { redirect_to board_path(board), notice: 'Task was successfully created.' }
       end
-      # render :new
     end
   end
 
-  # PATCH/PUT /tasks/1
   def update
-    if @task.update(task_params)
-      redirect_to board_path(board), notice: 'Task was successfully updated.'
+    list = board.lists.where(id: params[:from_list_id]).take
+    task = list.tasks.find(params[:id])
+
+    if task.update(task_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to board_path(board), notice: 'Task was successfully updated.' }
+      end
     else
-      render :edit
+      respond_to do |format|
+        format.turbo_stream { stream_edit_form(@task.list) }
+        format.html { redirect_to board_path(board), notice: 'Task was successfully created.' }
+      end
     end
   end
 
   # DELETE /tasks/1
   def destroy
-    @task.destroy
+    task.destroy
     redirect_to tasks_url, notice: 'Task was successfully destroyed.'
   end
 
@@ -56,12 +58,12 @@ class Boards::TasksController < ApplicationController
 
   def stream_edit_form(list)
     render turbo_stream:
-             turbo_stream.replace("new_task_#{list.id}", partial: "boards/tasks/form", locals: { list: list })
+             turbo_stream.replace("new_task_#{list.id}", partial: 'boards/tasks/form', locals: { list: list })
   end
 
   def stream_new_form(list)
     render turbo_stream:
-             turbo_stream.replace("new_task_#{list.id}", partial: "boards/tasks/new_task", locals: { list: list })
+             turbo_stream.replace("new_task_#{list.id}", partial: 'boards/tasks/new_task', locals: { list: list })
   end
 
   helper_method def task
@@ -69,7 +71,7 @@ class Boards::TasksController < ApplicationController
   end
 
   helper_method def board
-    @board ||= Board.find(params[:board_id])
+    @board ||= Board.find(params[:board_id]) # @TODO: current_user.boards ... assigned to the user
   end
 
   helper_method def list
@@ -83,6 +85,6 @@ class Boards::TasksController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def task_params
-    params.require(:task).permit(:name, :description, :list_id)
+    params.require(:task).permit(:name, :description, :position, :list_id)
   end
 end
