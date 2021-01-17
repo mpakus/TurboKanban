@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :boards do
     resources :tasks, controller: 'boards/tasks'
   end
+
+  root 'boards#index'
 end

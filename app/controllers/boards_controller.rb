@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BoardsController < ApplicationController
+class BoardsController < AuthenticatedController
   def index; end
 
   def show; end

@@ -12,6 +12,7 @@ export default class extends Controller {
       handle: '.task-card',
       group: this.element.getAttribute('data-list-group'),
       animation: 150,
+      easing: "cubic-bezier(1, 0, 0, 1)",
       onEnd: this.sorted.bind(this)
     })
   }

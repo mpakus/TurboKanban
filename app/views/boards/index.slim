@@ -1,0 +1,4 @@
+h1 Boards of #{current_user.email}
+
+.text-right
+  = link_to 'Sign out', destroy_user_session_path, method: :DELETE

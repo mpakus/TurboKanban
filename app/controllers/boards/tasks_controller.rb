@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class Boards::TasksController < ApplicationController
-  # before_action :set_task, only: [:show, :edit, :update, :destroy]
-
+class Boards::TasksController < AuthenticatedController
   def index
     @tasks = Task.all
   end
@@ -48,7 +46,6 @@ class Boards::TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
   def destroy
     task.destroy
     redirect_to tasks_url, notice: 'Task was successfully destroyed.'
