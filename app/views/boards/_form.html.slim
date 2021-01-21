@@ -1,0 +1,10 @@
+= form_for board, html:{ 'data-turbo': false } do |f|
+  - if board.errors.any?
+    - error_class = 'border-red-300' if board.errors.include? :name
+
+  .field
+    = f.text_field :name,
+            placeholder: 'Task Title',
+            class: "input-text #{error_class}"
+  .actions
+    = f.submit 'Create Board', class: 'btn'

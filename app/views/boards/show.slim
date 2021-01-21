@@ -1,5 +1,10 @@
+= render 'shared/nav'
+
+h2.px-4.py-2.text-2xl.font-semibold.text-blue-800
+  = board.name
+
 .flex.justify-center
-  .min-h-screen.flex.overflow-x-scroll.py-12
+  .min-h-screen.flex.overflow-x-scroll.py-4
     = hidden_field_tag 'board_id', board.id
     - board.lists.includes(:tasks).each do |list|
       .bg-gray-100.rounded-lg.px-3.py-3.column-width.rounded.mr-4
@@ -7,9 +12,8 @@
           = list.name
 
         = turbo_stream_from list
-        = turbo_frame_tag list do
-          div data-controller="sortable" data-list-group="tasks" data-id="#{list.id}"
-            = render partial: 'boards/tasks/task', collection: list.tasks, as: :task
+        = turbo_frame_tag list, 'data-controller': "sortable", 'data-list-group': 'tasks', 'data-id': list.id do
+          = render partial: 'boards/tasks/task', collection: list.tasks, as: :task
 
         .flex.flex-col.pb-2.overflow-auto.text-center.mt-2
           = turbo_frame_tag "new_task_#{dom_id(list)}" do

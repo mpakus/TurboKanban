@@ -36,3 +36,9 @@ Metrics/BlockLength:
 RSpec/NamedSubject:
   Exclude:
     - 'spec/**/*'
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false

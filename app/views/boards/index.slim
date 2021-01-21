@@ -1,4 +1,16 @@
-h1 Boards of #{current_user.email}
+= render 'shared/nav'
 
-.text-right
-  = link_to 'Sign out', destroy_user_session_path, method: :DELETE
+.content-layout
+  div
+    .text-right
+      = link_to '+ Create New Board',
+              new_board_path,
+              class: 'btn'
+
+    ul.shadow.mt-6
+      - current_user.boards.find_each do |board|
+        li
+          = link_to board.name,
+                  board_path(board),
+                  class: 'block p-4 hover:bg-indigo-400',
+                  target: '_top'

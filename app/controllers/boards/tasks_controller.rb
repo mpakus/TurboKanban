@@ -80,7 +80,6 @@ class Boards::TasksController < AuthenticatedController
     @list
   end
 
-  # Only allow a list of trusted parameters through.
   def task_params
     params.require(:task).permit(:name, :description, :position, :list_id)
   end

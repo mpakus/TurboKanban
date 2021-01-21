@@ -10,13 +10,9 @@ gem 'devise'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.0'
+gem 'redis', '~> 4.0'
 gem 'slim-rails'
 gem 'webpacker', '~> 5.0'
-
-# Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   gem 'awesome_print'
@@ -42,9 +38,6 @@ group :development do
   gem 'letter_opener'
   gem 'listen', '~> 3.3'
   gem 'ordinare', require: false
-  # gem 'rack-mini-profiler', '~> 2.0', require: false
-  # gem 'memory_profiler'
-  # gem 'stackprof'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false

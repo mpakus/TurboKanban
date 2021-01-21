@@ -6,20 +6,25 @@
   min-width: 320px;
   width: 320px;
 }
-/* Unfortunately @apply cannot be setup in codesandbox,
-but you'd use "@apply border opacity-50 border-blue-500 bg-gray-200" here */
-.sortable-ghost {
-  opacity: 0.5;
-  /*background: #F7FAFC;*/
-  background: #a7daef;
-  /*border: 1px solid #4299e1;*/
+
+.btn {
+  @apply w-full p-3 mt-10 bg-indigo-900 rounded-sm font-medium text-white uppercase focus:outline-none hover:bg-indigo-700 hover:shadow-md rounded-lg;
 }
 
-/*.sortable-chosen {*/
-/*  opacity: 0.5;*/
-/*  background: #F7FAFC;*/
-/*  !*border: 1px solid #4299e1;*!*/
-/*}*/
+.input-text {
+  @apply w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+}
+
+.content-layout {
+  @apply container h-screen bg-gray-100 px-4 py-4 sm:my-auto p-4;
+  width: 100%;
+  max-width: 100% !important;
+}
+
+.sortable-ghost {
+  opacity: 0.5;
+  background: #a7daef;
+}
 
 .sortable-drag {
   opacity: 0.8;

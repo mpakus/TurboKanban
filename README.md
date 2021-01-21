@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An example of a nice Trello-like Kanban board.
 
-Things you may want to cover:
+A small test application as an example of working with the Hotwire components Turbo::Frame, Turbo::Stream and Stimulus.
 
-* Ruby version
+Authentication
+```
+user@example.com
+Password123
+```
 
-* System dependencies
+## Screenshot
 
-* Configuration
+![Alt text](https://monosnap.com/image/dkCApCUY8qFfBeIavt2iQ6mJscvEn1)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Alt text](https://monosnap.com/image/oB3chVqTdrTwr2JVogyZKrR0mqj3VR)

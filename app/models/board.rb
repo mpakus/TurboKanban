@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class Board < ApplicationRecord
-  belongs_to :company
+  belongs_to :user
+  belongs_to :company, optional: true
   has_many :lists, dependent: :destroy
+
+  validates :name, presence: true
 end
 
 # == Schema Information
@@ -13,13 +16,13 @@ end
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  company_id :bigint           not null
+#  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_boards_on_company_id  (company_id)
+#  index_boards_on_user_id  (user_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (user_id => users.id)
 #

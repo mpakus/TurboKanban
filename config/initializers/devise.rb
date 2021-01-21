@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 class TurboFailureApp < Devise::FailureApp
   def respond
     if request_format == :turbo_stream
@@ -11,7 +10,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
+    %w[html turbo_stream */*].include? request_format.to_s
   end
 end
 
@@ -19,10 +18,10 @@ class TurboController < ApplicationController
   class Responder < ActionController::Responder
     def to_turbo_stream
       controller.render(options.merge(formats: :html))
-    rescue ActionView::MissingTemplate => error
-      if get?
-        raise error
-      elsif has_errors? && default_action
+    rescue ActionView::MissingTemplate => e
+      raise e if get?
+
+      if has_errors? && default_action
         render rendering_options.merge(formats: :html, status: :unprocessable_entity)
       else
         redirect_to navigation_location
@@ -48,7 +47,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = 'e25ab711f1bdeadac53536f46921e10a32e4834598448f8c251d4ca3e2a7eab31771498f5e4404305b932a966a1d7cbf760d13d04910e32355b75c5197a02836'
+  config.secret_key = 'e25ab711f1bdeadac53536f46921e10a32e4834598448f8c251d4ca3e2a7eaf760d13d04910e32355b75c5197a02836'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -160,7 +159,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '18e85d2bab82ff2eff001c7704ca0de6dd80c80410cb9e3ba50965472ddcb85f6997704f5540541338edd92b647e4d365f0c6045484bab24e5a172f2372cbb6f'
+  # config.pepper = '18e85d2bab82ff2eff001c7704c92b647e4d365f0c6045484bab24e5a172f2372cbb6f'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
