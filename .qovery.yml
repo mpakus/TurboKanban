@@ -1,6 +1,6 @@
 ---
 application:
-  name: "turbo-kanban"
+  name: "turbokanban"
   project: "turbo-kanban"
   organization: "QoveryCommunity"
 databases:
@@ -11,8 +11,8 @@ databases:
   name: "0"
   version: "6"
 routers:
-- name: "main-turbo-kanban"
+- name: "main-turbokanban"
   routes:
-  - application_name: "turbo-kanban"
+  - application_name: "turbokanban"
     paths:
     - "/*"
