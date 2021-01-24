@@ -1,0 +1,18 @@
+---
+application:
+  name: "turbo-kanban"
+  project: "turbo-kanban"
+  organization: "QoveryCommunity"
+databases:
+- type: "POSTGRESQL"
+  name: "telle_production"
+  version: "11"
+- type: "REDIS"
+  name: "0"
+  version: "6"
+routers:
+- name: "main-turbo-kanban"
+  routes:
+  - application_name: "turbo-kanban"
+    paths:
+    - "/*"
