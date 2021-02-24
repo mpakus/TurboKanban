@@ -1,12 +1,16 @@
 ---
 application:
   name: "turbokanban"
-  project: "turbo-kanban"
+  project: "turbokanban"
   organization: "QoveryCommunity"
+  publicly_accessible: true
+  depends_on:
+    - "telle_production"
+      "0"
 databases:
 - type: "POSTGRESQL"
   name: "telle_production"
-  version: "11"
+  version: "11.9.0"
 - type: "REDIS"
   name: "0"
   version: "6"

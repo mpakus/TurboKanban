@@ -16,5 +16,4 @@ test:
 production:
   <<: *default
   database: telle_production
-  username: telle
-  password: <%= ENV['TELLE_DATABASE_PASSWORD'] %>
+  url: <%= ENV.fetch('QOVERY_DATABASE_TELLE_PRODUCTION_CONNECTION_URI') %>
